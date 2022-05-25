@@ -19,40 +19,32 @@ int	ft_strcmp(char *s1, char s2)
 }
 	
 
-void    ft_union(char *s1, char *s2)
+void	inter(char *s1, char *s2)
 {
 	int i = 0;
-	char temp[256];
 	int j = 0;
+	char temp[256];
 
-	temp[j] = s1[i];
 	while (s1[i] != '\0')
 	{
-		if (ft_strcmp(temp, s1[i]) != 0)
+		if (ft_strcmp(s2, s1[i]) == 0)
 		{
-			++j;
-			temp[j] = s1[i];
+			if (ft_strcmp(temp, s1[i]) != 0)
+			{
+				temp[j] = s1[i];
+				++j;
+			}
 		}
 		++i;
 	}
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		if (ft_strcmp(temp, s2[i]) != 0)
-		{
-			++j;
-			temp[j] = s2[i];
-		}
-		++i;
-	}
-	temp[++j] = '\0';
+	temp[j] = '\0';
 	ft_putstr(temp);
 }
 
 int main(int argc, char *argv[])
 {
 	if (argc == 3)
-		ft_union(argv[1], argv[2]);
+		inter(argv[1], argv[2]);
 	write(1, "\n", 1);
 	return (0);
 }
